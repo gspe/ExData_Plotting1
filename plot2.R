@@ -24,11 +24,12 @@ PowerConsumption$DateTime <- strptime(PowerConsumption$DateTime, "%d/%m/%Y %H:%M
 selection <- (PowerConsumption$DateTime >= "2007-02-01" & PowerConsumption$DateTime < "2007-02-03")
 PowerConsumption <- subset(PowerConsumption, selection == TRUE)
 
+# Open png device
+png(filename = "plot2.png", width = 480, height = 480)
+
 # Plot graph
-title <- "Global Active Power"
 ylabel <- "Global Active Power (kilowatts)"
 plot(PowerConsumption$DateTime, PowerConsumption$Global_active_power, type = "l", xlab = "", ylab = ylabel)
 
-# Save graph to png
-dev.copy(device = png, filename = "plot2.png", width = 480, height = 480)
+# Close png device
 dev.off()
